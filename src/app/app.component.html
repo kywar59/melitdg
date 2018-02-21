@@ -1,0 +1,31 @@
+<!-- <div class="content-login" [hidden]="accessAll.local_access"> -->
+<div class="content-login" *ngIf="!accessAll.local_access">
+  <app-login (sendLogin)="recieveData($event)"></app-login>
+</div>
+<!-- <div class="content-dash" [hidden]="!accessAll.local_access"> -->
+<div class="content-dash" *ngIf="accessAll.local_access">
+  <app-navbar></app-navbar>
+
+      <div class="app-body">
+          <app-sidebar></app-sidebar>
+
+          <!-- Main content -->
+          <main class="main">
+
+              <!-- Breadcrumb -->
+
+              <ol class="breadcrumb invisible">
+
+              </ol>
+
+              <div class="container-fluid">
+                  <div class="animated fadeIn">
+                      <router-outlet></router-outlet>
+                  </div>
+
+              </div>
+              <!-- /.conainer-fluid -->
+          </main>
+
+      </div>
+</div>

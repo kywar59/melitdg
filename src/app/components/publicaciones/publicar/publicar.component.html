@@ -1,0 +1,175 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-block">
+          <h3 class="card-title">Publicar Item</h3>
+          <p class="card-text">Completa cada uno de los campos necesarios.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card card-inverse card-warning">
+        <div class="card-block">
+          <h5>Atencion! <i class="fa fa-exclamation-circle" aria-hidden="true"></i></h5>
+          <p class="card-text text-white" >Recuerda mientras seas mas especifico en el titulo, la prediccion de categoria sera mas eficiente.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form #formItem="ngForm" novalidate="novalidate" (ngSubmit)="publicarItem(formItem)" method="post">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-block">
+            <div class="form-group row">
+              <label for="title" class="col-2 col-form-label">Titulo</label>
+              <div class="col-10">
+                <input class="form-control" autocomplete="off" name="title" [(ngModel)]="item.title" (keyup)="predictCategorie()" type="text" placeholder="Ipod 16gb 4ta Generacion" id="title">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="category_id" class="col-2 col-form-label">Categoria</label>
+              <div class="col-10">
+                <input class="form-control" type="hidden" name="category_id" [(ngModel)]="item.category_id" placeholder="" id="category_id" value="{{ c.name }}">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item active" *ngFor="let path of c.path_from_root" > {{ path.name }} </li>
+                </ol>
+                <input class="form-control" type="hidden" name="currency_id" [(ngModel)]="item.currency_id" placeholder="" id="category_id" value="VEF">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="price" class="col-2 col-form-label">Precio</label>
+              <div class="col-10">
+                <input class="form-control" type="number" [(ngModel)]="item.price" placeholder="85000" name="price" id="price">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="available_quantity" class="col-2 col-form-label">Cantidad</label>
+              <div class="col-10">
+                <input class="form-control" type="number" placeholder="20" name="available_quantity" [(ngModel)]="item.available_quantity">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="buying_mode" class="col-2 col-form-label">Modo de compra</label>
+              <div class="col-10">
+                <select class="form-control" [(ngModel)]="item.buying_mode" name="buying_mode">
+                  <option value="buy_it_now">Comprar Ahora</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="listing_type" class="col-2 col-form-label">Tipo de Publicacion</label>
+              <div class="col-10">
+                <select class="form-control" id="listing_type" name="listing_type_id" [(ngModel)]="item.listing_type_id">
+                  <ng-container *ngFor="let type of listingTypes">
+                    <option [value]="type.id" *ngIf="type.id === 'free' || type.id === 'bronze' || type.id === 'gold_special' ">{{ type.name }}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row condition">
+              <label for="condition" class="col-2 col-form-label">Tipo de Publicacion</label>
+              <div class="col-10">
+                <label class="custom-control custom-radio">
+                  <input id="radio1" name="condition" value="new" [(ngModel)]="item.condition" type="radio" class="custom-control-input">
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-description">Nuevo</span>
+                </label>
+                <label class="custom-control custom-radio">
+                  <input id="radio2" name="condition" value="used" [(ngModel)]="item.condition" type="radio" class="custom-control-input">
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-description">Usado</span>
+                </label>
+              </div>
+            </div>
+            <h5 class="col-12  text-center">Descripcion</h5>
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#plain" role="tab">Texto Plano</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#html" role="tab">Texto HTML</a>
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="plain" role="tabpanel">
+                <div class="form-group row">
+                  <div class="col-12">
+                    <textarea class="form-control" rows="5" id="mytextarea" name="description" [(ngModel)]="descripcion_1" (keyup)="putDescription1()"  placeholder="Un Ipod muy genial..."></textarea>
+                    <input type="hidden" [(ngModel)]="item.description" name="description">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="html" role="tabpanel">
+                <textarea [froalaEditor]='froalaOp' name="description" ></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-block">
+            <h5 class="card-title"> Programar venta 
+              <label class="text-right switch switch-icon switch-pill switch-info mleft-15">
+                <input type="checkbox" class="switch-input" (change)="onProgramList($file)">
+                <span class="switch-label" data-on="" data-off=""></span>
+                <span class="switch-handle"></span>
+              </label>
+            </h5>
+            <div class="row" *ngIf="programar == true">
+              <div class="col-md-6">
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1">
+                    <i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
+                  </span>
+                    <input class="form-control"
+                      [ngModel]="momentValue | date: 'fullDate'" 
+                      [(dateTimePicker)]="momentValue" 
+                      [mode]="'dropdown'"
+                      [locale]=" 'es' "
+                      [pickerType]="'date'"
+                      [autoClose]="true"
+                      />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group">
+                    <input class="form-control"
+                      [ngModel]="momentValue | date: 'shortTime'" 
+                      [(dateTimePicker)]="momentValue" 
+                      [mode]="'dropdown'"
+                      [locale]=" 'es' "
+                      [hourTime]="'24'"
+                      [pickerType]="'time'"
+                      />
+                  <span class="input-group-addon" id="basic-addon1">
+                    <i class="fa fa-clock-o fa-2x" aria-hidden="true"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-block">
+            <h5 class="card-title">Imagenes del producto</h5><hr>
+            <div  [dropzone]="config" (error)="onUploadError($event)" (success)="onUploadSuccess($event, $res)"></div>
+          <pre>
+            {{ item | json }}
+          </pre> 
+          <br>
+          <!--<pre>
+            {{ c | json }}
+          </pre>-->
+            <hr>
+            <button class="btn btn-outline-primary btn-block btn-lg" type="submit">
+              <i class="pf pf-mercado-pago-sign align-middle"></i>Publicar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,99 @@
+<div class="sidebar">
+    <nav class="sidebar-nav">
+        <ul class="nav">
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard 
+                    <span class="badge badge-info">NEW</span></a>
+            </li>
+
+            <li class="nav-title">
+                Herramientas
+            </li>
+            <li class="nav-item nav-dropdown" [ngClass]="{open: openBusqueda == true}">
+                <a class="nav-link nav-dropdown-toggle" (click)="onOpenBusqueda()"><i class="fa fa-search fa-2x" aria-hidden="true"></i> Busqueda</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['buscar/productos']"><i class="fa fa-cubes" aria-hidden="true"></i> Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['buscar/usuarios']"><i class="fa fa-users" aria-hidden="true"></i> Usuarios</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item" >
+                <a class="nav-link" (click)="showSuccess($event)"><i class="fa fa-line-chart" aria-hidden="true"></i> Estadisticas</a>
+            </li>
+            <li class="nav-item nav-dropdown" [ngClass]="{open: openList == true}">
+                <a class="nav-link nav-dropdown-toggle" (click)="onOpenList()"><i class="fa fa-list-ul fa-2x" aria-hidden="true"></i> Publicaciones</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['publicaciones/publicadas']"><i class="fa fa-list-alt" aria-hidden="true"></i> Publicadas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['publicaciones/publicar-item']"><i class="fa fa-upload" aria-hidden="true"></i> Publicar Item</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['publicaciones/publicar-lote']"><i class="fa fa-file-archive-o" aria-hidden="true"></i> Publicion Masiva</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item nav-dropdown" [ngClass]="{open: openQuest == true}">
+                <a class="nav-link nav-dropdown-toggle" (click)="onOpenQuest()"><i class="fa fa-comments-o fa-2x" aria-hidden="true"></i> Feedback</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['feedback/preguntas']"><i class="fa fa-question" aria-hidden="true"></i> Preguntas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['feedback/respuestas']"><i class="fa fa-pencil" aria-hidden="true"></i> Respuestas</a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </nav>
+</div>
+
+<!-- <div #myModal class="modal fade" id="myModal" tabindex="9" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!-- <div class="contaier-fluid">
+    <div class="row">
+        <div class="col-sm-6">
+            <p>Tiene zapatos?</p>
+            <select class="custom-select">
+                <option selected>Respuestas predeterminadas</option>
+                <option value="1">Por favor comuniquese al....</option>
+                <option value="2">No esta disponible...</option>
+                <option value="3">Si, oferte que cuidado</option>
+            </select>
+            <div class="form-group">
+                <label for="message-text" class="col-form-label">Respuesta:</label>
+                <textarea class="form-control" id="message-text"></textarea>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-12"></div>
+                <div class="col-sm-12"></div>
+            </div>
+        </div>
+    </div>
+</div> -->
+

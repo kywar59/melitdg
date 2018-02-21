@@ -1,0 +1,75 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-block">
+          <h3 class="card-title">Listado de Preguntas</h3>
+          <p class="card-text">Podras visualizar los items con las preguntas que te han realizado.</p>
+          <hr>
+          <!-- Loader antes de cargar data -->
+          <div class="container" *ngIf="source.length == 0">
+            <p class="text-center">
+              <span class="loader"><span class="loader-inner"></span></span>
+            </p>
+          </div>
+          <!-- Data ya cargada -->
+          <div id="accordionQuest" data-children=".item" *ngIf="source.length > 0">
+            <div class="item" *ngFor="let item of source; let i = index" style="margin-bottom:20px"> 
+              <a data-toggle="collapse" data-parent="#accordionQuest" attr.href="#{{item.id}}" aria-expanded="true" attr.aria-controls="{{item.id}}">
+               <img [src]="item.secure_thumbnail" width="50px" height="50px"> 
+               {{item.title}} - 
+              </a>
+              
+              <a [href]="item.permalink"  data-toggle="tooltip" title="Ver en Pentaña" target="_blank"><i class="fa fa-external-link fa-lg" aria-hidden="true"></i></a>
+              <div id="{{item.id}}" class="collapse" role="tabpanel">
+                <p class="mb-3">
+                  <ng2-smart-table [settings]="settingTable" [source]="item.questions" (userRowSelect)="selectedRows($event)"></ng2-smart-table>
+                </p>
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div #modalAnswers class="modal fade bd-example-modal-lg" id="modalAnswers" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
+
+
+<div class="animated" id="container-floating" [hidden]="lenData < 1">
+
+  <!-- <div class="nd5 nds" data-toggle="tooltip" data-placement="left" data-original-title="Simone"></div>
+  <div class="nd4 nds" data-toggle="tooltip" data-placement="left" data-original-title="contract@gmail.com"><img class="reminder">
+    <p class="letter">C</p>
+  </div> -->
+  <div class="nd3 nds" data-toggle="tooltip" data-placement="left" title="Responder"><img class="reminder">
+    <p class="letter" (click)="postMultiAnswer()">
+      <i class="fa fa-reply-all " aria-hidden="true"></i>
+    </p>
+  </div>
+  <div class="nd1 nds" data-toggle="tooltip" data-placement="left" title="Eliminar"><img class="reminder">
+    <p class="letter" (click)="deleteMultiQuest()">
+      <i class="fa fa-trash-o" aria-hidden="true"></i>
+    </p>
+  </div>
+
+  <div id="floating-button" data-toggle="tooltip" data-placement="left" title="Opciones">
+    <p class="plus">+</p>
+    <img class="edit" src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/bt_compose2_1x.png">
+  </div>
+  
+</div>
+
+
+
+
+

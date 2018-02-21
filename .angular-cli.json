@@ -1,0 +1,78 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "prueba-paper"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "styles.css",
+        "../src/assets/libs/css/style.css",
+        "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css",
+        "../node_modules/sweetalert2/dist/sweetalert2.css",
+        "../node_modules/paymentfont/css/paymentfont.min.css",
+        "../src/assets/libs/ownFonts/css/ownFont.css",
+        "../src/assets/libs/css/jquery.fancybox.css",
+        "../src/assets/libs/css/dropzone.min.css",
+        "../node_modules/froala-editor/css/froala_editor.pkgd.min.css"
+      ],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.js",
+        "../node_modules/tether/dist/js/tether.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.js",
+        "../node_modules/froala-editor/js/froala_editor.pkgd.min.js",
+        "../src/assets/libs/js/app.js",
+        "../src/assets/libs/js/main.js",
+        "../src/assets/libs/js/widgets.js",
+        "../node_modules/ng2-toastr/bundles/ng2-toastr.min.js",
+        "../node_modules/sweetalert2/dist/sweetalert2.js",
+        "../src/assets/libs/js/jquery.fancybox.js",
+        "../node_modules/lodash/lodash.js",
+        "../node_modules/cloudinary-core/cloudinary-core.js"
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json"
+    },
+    {
+      "project": "src/tsconfig.spec.json"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "component": {}
+  }
+}

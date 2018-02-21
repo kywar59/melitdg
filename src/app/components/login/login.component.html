@@ -1,0 +1,49 @@
+<div class="wrapper">
+  <div class="container">
+    <h1>Bienvenidos a Meliapp</h1>
+
+    <div class="login" *ngIf="showLogin">
+      <form class="form" [formGroup]="form" (ngSubmit)="loginClick(form.value)">
+        <input [formControl]="email" type="email" required id="username" name="email" placeholder="Correo">
+        <input [formControl]="password" type="password" required id="password" name="password" placeholder="Password">
+        <button type="submit" id="login-button">Login <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+        <button type="button" (click)="showRegister()">
+           Registro <i class="fa fa-user-plus" aria-hidden="true"></i>
+        </button>
+      </form>
+    </div>
+
+    <!-- Crear div para el registro -->
+    <div class="register" *ngIf="showReg">
+      <form class="form" [formGroup]="formRegister" (ngSubmit)="registerClick(formRegister.value)">
+        <input [formControl]="name" type="text" required id="name" name="name" placeholder="Nombre">
+        <input [formControl]="lastname" type="text" required id="lastname" name="lastname" placeholder="Apellido">
+        <input [formControl]="email_reg" type="email" required id="username" name="email" placeholder="Correo">
+        <input [formControl]="password_reg" type="password" required id="password" name="password" placeholder="Password">
+        <button type="submit" id="login-button">Registrar <i class="fa fa-check" aria-hidden="true"></i></button>
+        <button type="button" id="login-button" (click)="showRegister()">
+          Atras <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </button>
+      </form>
+    </div>
+
+    <!-- Registro -->
+    <div class="mx-auto">
+      <!-- <button type="button" (click)="showRegister()">Registro</button> -->
+    </div>
+
+  </div>
+
+  <ul class="bg-bubbles" style="height:100% ">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>

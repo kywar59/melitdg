@@ -1,0 +1,31 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-block">
+          <h3 class="card-title">Listado de Respuestas</h3>
+          <p class="card-text">Podras visualizar todas las respuestas que haz registrado para su uso masivo.</p>
+          <hr>
+          <!-- Loader antes de cargar data -->
+          <!-- <div class="container" *ngIf="source.length == 0">
+            <p class="text-center">
+              <span class="loader">
+                <span class="loader-inner"></span>
+              </span>
+            </p>
+          </div> -->
+          <!-- Data ya cargada -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="animated" id="container-floating">
+
+  <div id="floating-button" data-toggle="tooltip" data-placement="left" title="Opciones" (click)="addAnswer()">
+    <p class="plus">+</p>
+    <img class="edit" src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/bt_compose2_1x.png">
+  </div>
+
+</div>

@@ -1,0 +1,86 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-lg-3 col-md-2 col-sm-6">
+            <div class="card card-inverse card-info">
+                <div class="card-block">
+                    <div class="h1 text-muted text-right mb-4">
+                        <i class="fa fa-user-plus fa-lg" aria-hidden="true"></i>
+                    </div>
+                    <div class="h4 mb-0">{{ viewsPerMonth }}</div>
+                        <small class="text-muted text-uppercase font-weight-bold">Visitas por Mes</small>
+                        <div class="progress progress-white progress-xs mt-3">
+                        <div class="progress-bar" role="progressbar" [style.width]="viewsPerMonth+'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-2 col-sm-6">
+            <div class="card card-inverse card-warning">
+                <div class="card-block">
+                    <div class="h1 text-muted text-right mb-4">
+                        <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
+                    </div>
+                    <div class="h4 mb-0">1965</div>
+                    <small class="text-muted text-uppercase font-weight-bold">Ventas al Mes</small>
+                        <div class="progress progress-white progress-xs mt-3">
+                        <div class="progress-bar" role="progressbar" [style.width]="questionsMonth+'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-2 col-sm-6">
+            <div class="card card-inverse card-primary">
+                <div class="card-block">
+                    <div class="h1 text-muted text-right mb-4">
+                        <i class="fa fa-commenting-o fa-lg" aria-hidden="true"></i>
+                    </div>
+                    <div class="h4 mb-0">{{ questionsMonth }}</div>
+                    <small class="text-muted text-uppercase font-weight-bold">Preguntas al Mes</small>
+                    <div class="progress progress-white progress-xs mt-3">
+                    <div class="progress-bar" role="progressbar" [style.width]="questionsMonth+'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-2 col-sm-6">
+            <div class="card card-inverse card-success">
+                <div class="card-block">
+                    <div class="h1 text-muted text-right mb-4">
+                        <i class="fa fa-commenting-o fa-lg" aria-hidden="true"></i>
+                    </div>
+                    <div class="h4 mb-0">{{ questionsMonth }}</div>
+                    <small class="text-muted text-uppercase font-weight-bold">Comments</small>
+                    <div class="progress progress-white progress-xs mt-3">
+                    <div class="progress-bar" role="progressbar" [style.width]="questionsMonth+'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-block">
+                  <div class="row">
+                    <div class="col-md-8">
+                      <angular2-fullcalendar [options]="calendarOptions" (initialized)="onCalendarInit($event)"></angular2-fullcalendar>
+                    </div>
+                    <div class="col-md-4">
+                      <button type="button" class="btn btn-outline-primary btn-lg btn-block">
+                        <i class="fa fa-plus fa-lg" aria-hidden="true"></i> Agregar Evento
+                      </button>
+                      <br>
+                      <button type="button" class="btn btn-outline-success btn-lg btn-block">
+                        <i class="fa fa-pencil fa-lg" aria-hidden="true"></i> Editar Eventos
+                      </button>
+                      <br>
+                      <button type="button" class="btn btn-outline-danger btn-lg btn-block">
+                        <i class="fa fa-times fa-lg" aria-hidden="true"></i> Eliminar Eventos
+                      </button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="card">
+    <div class="card-block">
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">
+                <i class="fa fa-search fa-2x" aria-hidden="true"></i>
+            </span>
+            <input type="text" name="termino" [(ngModel)]="termino" (keyup.enter)="getProducts()" class="form-control" placeholder="Ipod nano 4G" aria-describedby="basic-addon1">
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <div class="card">
+            <div class="card-block">
+                <h5 class="card-subtitle mb-2 text-muted">Filtros:</h5>
+                <nav class="nav flex-column">
+                    <a class="nav-link font-weight-bold" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Active</a>
+                    <div class="collapse" id="collapseExample">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">Active</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                        </ul>
+                        <hr>
+                    </div>
+                    <a class="nav-link font-weight-bold" href="#">Link</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div class="row">
+            <div class="col-md-4" *ngFor="let product of products, let i = index">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" [src]="product.thumbnail" [alt]="product.title">
+                    <div class="card-block">
+                        <h4 class="card-title">Bs. {{ product.price | number : '1.2-2' }}</h4>
+                        <p class="card-text">{{ product.title }}</p>
+                        <p class="lead"></p>
+                        <a [routerLink]="[ '/producto', product.id ]" class="btn btn-primary">Ver Item</a>
+                        <button class="btn btn-circle btn- pull-right">
+                          <i class="fa fa-star-o fa-1x" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
